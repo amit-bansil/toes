@@ -1,8 +1,8 @@
-# T4 implemented in React
+# Toes- Tic Tac Toe for Geniuses
 
-T4 is a generalized version of the game tic tac toe.
+Toes is a generalized version of the game tic tac toe.
 
-You can play it at [t4.bansil.org](http://t4.bansil.org).
+You can play it at [toes.bansil.org](http://toes.bansil.org).
 
 TODO: insert screenshot here
 

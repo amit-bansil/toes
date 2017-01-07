@@ -1,7 +1,6 @@
 {
-  "name": "t4-react",
+  "name": "toes",
   "version": "0.1.0",
-  "private": true,
   "devDependencies": {
     "react-scripts": "0.8.4",
     "s3": "^4.4.0"
