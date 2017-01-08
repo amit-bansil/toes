@@ -22,6 +22,48 @@ Gameplay is as follows:
 
  6. Rounds continue to commence with each successive player taking their turn until a player earns 10 points at which point that player is declared the winner of the game.
 
+## Project Structure
+
+This project is a fairly standard [React](https://facebook.github.io/react/)/[Redux](http://redux.js.org) app.
+
+The source code is organized as follows:
+
+ - src/game.js encapsulates the rules above into a pure API. It is created by app.js.
+ - src/setup.js is loaded by app.js and displays the game configuration screen. It's only dependency is game.js. It is loaded by app.js.
+ - src/round.js displays the game play screen. It's only dependency is game.js. It is loaded by app.js. 
+ - src/app.js combines all the js files except index.js into a single cohesive app. It is loaded by index.js.
+ - src/index.js is the main js entry point. It sets up Redux. It is loaded by index.html.
+ - public/index.html is the main html entry point and is mostly boilerplate and metadata. It loads app.js.
+
+```
+                  +-------------+
+                  |             |
+       +--------->+  game.js    +<---------+
+       |          |             |          |
+       |          +------+------+          |
+       |                 ^                 |
+       |                 |                 |
++------+------+   +------+------+   +------+------+
+|             |   |             |   |             |
+|  setup.js   +-->+  app.js     +<--+  round.js   |
+|             |   |             |   |             |
++-------------+   +------+------+   +-------------+
+                         ^
+                         |
+                  +------+------+
+                  |             |
+                  |  index.js   |
+                  |             |
+                  +------+------+
+                         ^
+                         |
+                  +------+------+
+                  |             |
+                  |  index.html |
+                  |             |
+                  +-------------+
+```
+
 ## Tooling
 
 This project is designed to be edited with [Visual Studio Code](https://code.visualstudio.com/).
@@ -43,7 +85,7 @@ To deploy the project run `node run deploy`. You will be prompted to setup s3 cr
 ## TODO
 
  - Setup Snapshot testing https://github.com/wallabyjs/public/issues/870.
-
+ - setup react storybook with snapshot testing: https://github.com/storybooks/storyshots.
  - Create mobile versions via cordova.
 
  - Allow head to head play via firebase.
