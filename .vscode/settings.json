@@ -1,0 +1,10 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "files.associations": {
+        ".js": "flow"
+  },
+  "files.autoSave": "onFocusChange",
+  "editor.wrappingColumn": 90,
+  "javascript.validate.enable": false
+}
+
