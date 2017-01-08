@@ -93,3 +93,5 @@ To deploy the project run `node run deploy`. You will be prompted to setup s3 cr
  - Intelligently pair people based on ELO rankings.
 
  - Add a simple user feedback system ala VS Code
+
+ - Encapsulate deploy in a library
