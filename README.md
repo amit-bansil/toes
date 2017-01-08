@@ -22,6 +22,16 @@ Gameplay is as follows:
 
  6. Rounds continue to commence with each successive player taking their turn until a player earns 10 points at which point that player is declared the winner of the game.
 
+## Tooling
+
+This project is designed to be edited with [Visual Studio Code](https://code.visualstudio.com/).
+
+It uses the following extensions:
+
+ - [Wallaby](http://dm.gl/2015/11/26/wallaby-for-visual-studio-code/) test runner.
+ - [vscode-flow-ide](https://marketplace.visualstudio.com/items?itemName=gcazaciuc.vscode-flow-ide) Flow type checker integration. Don't use vscode-flow.
+ - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) linter.
+
 ## Build
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
@@ -32,11 +42,7 @@ To deploy the project run `node run deploy`. You will be prompted to setup s3 cr
 
 ## TODO
 
- - Setup Jest
-
- - Setup that amazing testing plugin
-
- - Setup Travis
+ - Setup Snapshot testing https://github.com/wallabyjs/public/issues/870.
 
  - Create mobile versions via cordova.
 
