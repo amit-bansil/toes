@@ -49,3 +49,5 @@ To deploy the project run `node run deploy`. You will be prompted to setup s3 cr
  - Allow head to head play via firebase.
 
  - Intelligently pair people based on ELO rankings.
+
+ - Add a simple user feedback system ala VS Code
