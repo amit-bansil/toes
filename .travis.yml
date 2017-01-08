@@ -8,6 +8,8 @@ script:
 - npm run lint
 - npm test
 - npm run flow
+before_deploy:
+- npm run build
 deploy:
   provider: s3
   access_key_id: AKIAJ6OAEHT464RPP5DQ
