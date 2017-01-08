@@ -76,18 +76,28 @@ It uses the following extensions:
 
 ## Build
 
+To build this project you need to use [Node 6](https://nodejs.org).
+
+Here is how to perform basic project tasks:
+
+```sh
+npm run start   # Run this project locally.
+npm run lint    # Check source code for common errors.
+npm run flow    # Check project for type errors.
+npm test
+npm run build   # Create production distribution of project in build/.
+npm run deploy  # Deploy project to S3. You will be prompted for credentials
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 You can find the guide for the version of create-react-app used to create this project [here](https://github.com/facebookincubator/create-react-app/blob/4d7b7544e74db1aaca22e847b233ed1f3b95b72b/packages/react-scripts/template/README.md).
 
-To deploy the project run `node run deploy`. You will be prompted to setup s3 credentials the first time.
-
 ## TODO
 
  - Setup Snapshot testing https://github.com/wallabyjs/public/issues/870.
- - setup react storybook with snapshot testing: https://github.com/storybooks/storyshots.
+ - Setup react storybook with snapshot testing: https://github.com/storybooks/storyshots.
  - Create mobile versions via cordova.
-
  - Allow head to head play via firebase.
 
  - Intelligently pair people based on ELO rankings.
