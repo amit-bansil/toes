@@ -86,7 +86,6 @@ npm run lint    # Check source code for common errors.
 npm run flow    # Check project for type errors.
 npm test
 npm run build   # Create production distribution of project in build/.
-npm run deploy  # Deploy project to S3. You will be prompted for credentials
 ```
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
@@ -99,9 +98,5 @@ You can find the guide for the version of create-react-app used to create this p
  - Setup react storybook with snapshot testing: https://github.com/storybooks/storyshots.
  - Create mobile versions via cordova.
  - Allow head to head play via firebase.
-
  - Intelligently pair people based on ELO rankings.
-
  - Add a simple user feedback system ala VS Code
-
- - Encapsulate deploy in a library

@@ -1,11 +1,19 @@
 language: node_js
 node_js:
-  - 6
+- 6
 cache:
   directories:
-    - node_modules
+  - node_modules
 script:
-  - npm run lint
-  - npm test
-  - npm run flow
-  - npm run deploy
+- npm run lint
+- npm test
+- npm run flow
+deploy:
+  provider: s3
+  access_key_id: AKIAJ6OAEHT464RPP5DQ
+  secret_access_key:
+    secure: QvYoKlE0A+pkvYyZv/AqIAqq6yjdc9xpTq0mYHUlCY251KXe0if16/SQ9xgjEe84HKYnZ7ejNpgOXbkNwfoLIarLCX18RPwZtzm9IsJFRPE09AOgCtu2TX5jOAWdkzdPkDxAiMCPqJ2tNIupto9Ufr2T44Joop0pKkoFmW00tfcMn0Fo0fZxVtgea6tthMmu1jdmiUSR10yuJ7jTkWRKwDlqBn43/srbqUTptDEE5L34EPFeyE51HvNCxFjaTvXX+0cYD5RJ2CibHUPCQTs5PLUtYGAGSCmMiRKOmY6bnlfdWWaOE/ymeUV52lctiISsUcCBG0BjxRQ7kHMOdYXQKx6bOYpS1OV4L1TtL7LeoXQoqbNU01UY5cilhsopmiJxcpLs4cS/0Ouys8NhnfuSJiwvjCLhCi87gnIEZfKA/vSNLM1FQkRzIXiIqHMBmgaATXjZ03HN82rkjEYKVThcZ27ac0nvnOg0aJkFP3nW/vxgLrHEjCJQRh2IWjSfaKli15lmHcVgucI+bC/hWIxH+Rk0rUtwytBUiFf36he4sK1tSISewiIGkGkJhffF6sCxHsG1ploDKhF4mbHBBCoSdYn6PCjQaSQ+TgokbQZEBzMW/Hsi6y5sOjH153n/qHiG+mxC/Kbq/SCuzSyjNQ3uQopmWJP41Y94nWNA2uL6No8=
+  bucket: toes.bansil.org
+  skip_cleanup: true
+  local_dir: build
+  acl: public_read
