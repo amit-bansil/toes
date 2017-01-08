@@ -1,25 +1,28 @@
 // deploy ./build to s3. Run `node run build` beforehand.
 
-var s3 = require('s3');
-var fs = require('fs');
+const s3 = require("s3");
+const fs = require("fs");
+const path = require("path");
 
 // read opts
-var opts;
-var optsPath = __dirname + "/deploy-config.json";
+let opts;
+const optsPath = path.join(__dirname, "/deploy-config.json");
+
 
 function optsFailed() {
-  var optsJSON = {
-    accessKeyId: 'XXX',
-    secretAccessKey: 'XXX',
-    bucket: 'XXX',
+  const optsJSON = {
+    accessKeyId: "XXX",
+    secretAccessKey: "XXX",
+    bucket: "XXX",
   };
-  fs.writeFileSync(optsPath, JSON.stringify(optsJSON, null, '    '));
-  console.log('In order to deploy to AWS you must enter your credentials in deploy-config.json.')
+  fs.writeFileSync(optsPath, JSON.stringify(optsJSON, null, "    "));
+  console.log("In order to deploy to AWS you must enter your credentials in" +
+    " deploy-config.json.");
 }
 
 if (fs.existsSync(optsPath)) {
-  opts = require(optsPath);
-  if (opts.accessKeyId === 'XXX') {
+  opts = JSON.parse(fs.readFileSync(optsPath, "utf-8"));
+  if (opts.accessKeyId === "XXX") {
     optsFailed();
     return;
   }
@@ -29,15 +32,15 @@ if (fs.existsSync(optsPath)) {
 }
 
 // configure s3 client
-var client = s3.createClient({
+const client = s3.createClient({
   s3Options: {
     accessKeyId: opts.accessKeyId,
     secretAccessKey: opts.secretAccessKey,
   },
 });
 
-var uploadParams = {
-  localDir: __dirname + "/build",
+const uploadParams = {
+  localDir: path.join(__dirname, "/build"),
   deleteRemoved: true,
   s3Params: {
     Bucket: opts.bucket,
@@ -47,10 +50,10 @@ var uploadParams = {
 };
 
 // perform upload
-var uploader = client.uploadDir(uploadParams);
-uploader.on('error', function(err) {
+const uploader = client.uploadDir(uploadParams);
+uploader.on("error", (err) => {
   console.error("unable to sync:", err.stack);
 });
-uploader.on('end', function() {
+uploader.on("end", () => {
   console.log("done uploading");
 });
