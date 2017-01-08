@@ -45,7 +45,7 @@ The source code is organized as follows:
        |                 |                 |
 +------+------+   +------+------+   +------+------+
 |             |   |             |   |             |
-|  setup.js   +-->+  app.js     +<--+  round.js   |
+|  setup.js   +<--+  app.js     +-->+  round.js   |
 |             |   |             |   |             |
 +-------------+   +------+------+   +-------------+
                          ^
