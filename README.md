@@ -100,3 +100,4 @@ You can find the guide for the version of create-react-app used to create this p
  - Allow head to head play via firebase.
  - Intelligently pair people based on ELO rankings.
  - Add a simple user feedback system ala VS Code
+ - install redux dev middlware by adding a script ref in public/index.html and having index.js use it if found. The script ref should only be active if the url contains ?debug=true. Document all keycombos.
