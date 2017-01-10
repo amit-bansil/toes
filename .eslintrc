@@ -19,6 +19,7 @@
     }
   },
   "rules": {
+    "no-duplicate-imports": 0,
     "no-warning-comments": 0,
     "no-sync": 0,
     "sort-keys": 0,
