@@ -19,6 +19,7 @@
     }
   },
   "rules": {
+    "no-warning-comments": 0,
     "no-sync": 0,
     "sort-keys": 0,
     "comma-dangle": ["error", "always-multiline"],
