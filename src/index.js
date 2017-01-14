@@ -4,9 +4,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./app";
 import "./index.css";
-import {createStore} from "redux";
+import gameReducer from "./game-reducers";
 
+import {createStore, Provider} from "redux";
+const store = createStore(gameReducer);
 ReactDOM.render(
-  <App />,
-  document.getElementById("root")
+  <Provider store={store}><App /></Provider>,
+  document.getElementById("root"),
 );
