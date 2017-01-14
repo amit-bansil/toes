@@ -10,7 +10,8 @@
   "globals": {
     "it": true,
     "require": true,
-    "__dirname": true
+    "__dirname": true,
+    "expect": true
   },
   "parserOptions": {
     "ecmaFeatures": {
@@ -19,6 +20,30 @@
     }
   },
   "rules": {
+    "complexity": 0,
+    "no-ternary": 0,
+    "multiline-ternary": 0,
+    "no-unused-expressions": 0,
+    "max-lines": 0,
+    "no-else-return": 0,
+    "max-statements": 0,
+    "yoda": 0,
+    "no-mixed-operators": 0,
+    "no-trailing-spaces": 0,
+    "arrow-parens": 0,
+    "no-undefined": 0,
+    "object-curly-newline": 0,
+    "max-len": ["error", 90],
+    "arrow-body-style": ["error", "always"],
+    "no-magic-numbers": 0,
+    "no-use-before-define": 0,
+    "no-inline-comments": 0,
+    "line-comment-position": 0,
+    "default-case": 0,
+    "no-case-declarations": 0,
+    "no-extra-parens": 0,
+    "object-property-newline": 0,
+    "no-param-reassign": 0,
     "no-duplicate-imports": 0,
     "no-warning-comments": 0,
     "no-sync": 0,
