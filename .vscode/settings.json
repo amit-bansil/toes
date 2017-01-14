@@ -1,10 +1,20 @@
 // Place your settings in this file to overwrite default and user settings.
 {
   "files.associations": {
-        ".js": "flow"
+    ".js": "flow"
   },
   "files.autoSave": "onFocusChange",
   "editor.wrappingColumn": 90,
-  "javascript.validate.enable": false
+  "javascript.validate.enable": false,
+  "prettier.trailingComma": true,
+  "prettier.printWidth": 90,
+  "prettier.formatOnSave": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "build/": true,
+    "flow-typed/": true
+  }
 }
 

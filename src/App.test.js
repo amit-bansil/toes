@@ -1,8 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
+// @flow
 
-it("renders without crashing", () => {
-  const div = document.createElement("div");
-  ReactDOM.render(<App />, div);
-});
+import React from "react";
+import App from "./app";
+import * as TestUtils from "./util/test-util";
+
+TestUtils.smoke("App", <App />);

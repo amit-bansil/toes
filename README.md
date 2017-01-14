@@ -16,11 +16,11 @@ Gameplay is as follows:
 
  3. Starting with the first player, each player takes turns grabbing open squares on a `board size` rectangular grid until one player makes a horizontal,vertical, or diagonal string of consecutive pieces of their color that is `win length` long.
 
- 4. The winner recieves one point and this round of the game ends. If all the squares get filled before anyone wins the round is declared a stalemate and every player recieves one point.
+ 4. The winner recieves one point and this round of the game ends. If all the squares get filled before anyone wins the round is declared a stalemate and nobody receives any points.
 
  5. Once the round is over the second player selects a `board size` and `win length` as per step 2. Another round of play commences as per `Step 3` except this the second player begins the round.
 
- 6. Rounds continue to commence with each successive player taking their turn until a player earns 10 points at which point that player is declared the winner of the game.
+ 6. Rounds continue to commence with each successive player taking their turn until a player earns 5 points at which point that player is declared the winner of the game.
 
 ## Project Structure
 
@@ -100,3 +100,4 @@ You can find the guide for the version of create-react-app used to create this p
  - Allow head to head play via firebase.
  - Intelligently pair people based on ELO rankings.
  - Add a simple user feedback system ala VS Code
+ - install redux dev middlware by adding a script ref in public/index.html and having index.js use it if found. The script ref should only be active if the url contains ?debug=true. Document all keycombos.
