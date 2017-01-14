@@ -9,8 +9,8 @@ export function gameReducer(state: ?Types.Game, action: ?Types.Action): Types.Ga
       players: [Game.createPlayer(), Game.createPlayer()],
       alreadyPlayedBoards: [],
       mode: "SETUP_PLAYERS",
-      round: undefined,
-      board: undefined,
+      round: null,
+      board: null,
     };
   }
   if (!action) {
@@ -127,7 +127,7 @@ export function gameReducer(state: ?Types.Game, action: ?Types.Action): Types.Ga
       return {
         ...state,
         mode: "SETUP_BOARD",
-        round: undefined,
+        round: null,
         alreadyPlayedBoards: [...state.alreadyPlayedBoards, state.board],
         board: Game.createBoard(state.board.dimensions, state.board.winLength),
       };
@@ -140,9 +140,9 @@ export function gameReducer(state: ?Types.Game, action: ?Types.Action): Types.Ga
         ...state,
         players,
         mode: "SETUP_PLAYERS",
-        round: undefined,
+        round: null,
         alreadyPlayedBoards: [],
-        board: undefined,
+        board: null,
       };
     default:
       return state;

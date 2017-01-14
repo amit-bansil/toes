@@ -88,6 +88,7 @@ function reduceAll(startState, actions): Types.Game {
   }
   return ret;
 }
+
 function reduceWithoutSideEffects(state, action) {
   const startState = prettyPrint(state);
   const ret = Reducers.gameReducer(state, action);
