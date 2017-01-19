@@ -18,6 +18,8 @@ export function gameReducer(state: ?Types.Game, action: ?Types.Action): Types.Ga
   }
   state = {...state, players: playerReducer(state, action)};
   switch (action.type) {
+    case "ERROR":
+      return {...state, error: action.error};
     case "START_GAME":
       if (state.mode !== "SETUP_PLAYERS") {
         throw new Error(`can't start game from mode ${state.mode}`);
@@ -73,17 +75,18 @@ export function gameReducer(state: ?Types.Game, action: ?Types.Action): Types.Ga
           `square not found for coorinates: ${JSON.stringify(action.coordinates)}`,
         );
       }
-      if (targetSquare.owner) {
-        throw new Error(
-          `coordinates is already taken: ${JSON.stringify(targetSquare.owner)}`,
-        );
+      if (targetSquare.ownerId) {
+        throw new Error(`coordinates is already taken: ${targetSquare.ownerId}`);
       }
       if (state.round.winningLine) {
         throw new Error("can't move, current round has already been won.");
       }
       const currentPlayerId = state.round.currentPlayerId;
       const currentPlayer = state.players[currentPlayerId];
-      const lastSquarePlayed = {owner: currentPlayer, coordinates: action.coordinates};
+      const lastSquarePlayed = {
+        ownerId: currentPlayerId,
+        coordinates: action.coordinates,
+      };
       const squares = Object.assign(
         {},
         state.board.squares,
@@ -91,21 +94,29 @@ export function gameReducer(state: ?Types.Game, action: ?Types.Action): Types.Ga
       );
       const board = {...state.board, squares};
       const nextPlayerIndex = (currentPlayerId + 1) % state.players.length;
-      const winningLine = Game.findWinningLine(board, currentPlayer);
-      if (winningLine) {
-        const wins = currentPlayer.wins + 1;
-        const currentPlayerWithWins = {...currentPlayer, wins};
+      const winningLine = Game.findWinningLine(board, currentPlayerId);
+      const hasOpenSquare = Game.checkHasOpenSquare(board);
+      if (winningLine || !hasOpenSquare) {
+        let wins = currentPlayer.wins;
         const players = [...state.players];
-        players[currentPlayerId] = currentPlayerWithWins;
+        if (winningLine) {
+          wins += 1;
+          const currentPlayerWithWins = {...currentPlayer, wins};
+          players[currentPlayerId] = currentPlayerWithWins;
+        }
         return {
           ...state,
           mode: wins === Constants.WINNING_SCORE ? "GAME_OVER" : "ROUND_OVER",
           players,
           board,
-          round: {...state.round, lastSquarePlayed: action.coordinates, winningLine},
+          round: {
+            ...state.round,
+            lastSquarePlayed: action.coordinates,
+            winningLine,
+            hasOpenSquare,
+          },
         };
       } else {
-        const hasOpenSquare = Game.checkHasOpenSquare(board);
         return {
           ...state,
           board: {...state.board, squares},
@@ -113,7 +124,6 @@ export function gameReducer(state: ?Types.Game, action: ?Types.Action): Types.Ga
             ...state.round,
             currentPlayerId: nextPlayerIndex,
             lastSquarePlayed: action.coordinates,
-            hasOpenSquare,
           },
         };
       }
@@ -157,7 +167,7 @@ function playerReducer(state: Game, action: Types.Action): Array<Types.Player> {
     case "REMOVE_PLAYER":
     case "SET_PLAYER_USER":
     case "SET_PLAYER":
-      if (!id) {
+      if (!id && id !== 0) {
         throw new Error(`player with id '${id}' not defined`);
       }
     // eslint-disable-line no-fallthrough
@@ -168,6 +178,9 @@ function playerReducer(state: Game, action: Types.Action): Array<Types.Player> {
       if (state.mode !== "SETUP_PLAYERS") {
         throw new Error(`can't change players in mode ${state.mode}`);
       }
+      break;
+    default:
+      break;
   }
 
   switch (action.type) {

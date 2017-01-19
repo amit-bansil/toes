@@ -1,5 +1,3 @@
-export type Coordinates = [number, number];
-
 // Flow between GameModes as mediated by Actions
 // SETUP_PLAYERS<-+
 // v START_GAME   |
@@ -17,6 +15,11 @@ export type GameMode =
   | "ROUND_OVER"
   | "GAME_OVER";
 
+// first coordinate is x, second is y 
+export type Coordinates = [number, number];
+
+export type PlayerUser = "Computer" | "Human";
+
 export type Action = 
   | {type: "ADD_PLAYER"}
   | {type: "REMOVE_PLAYER", id: number}
@@ -28,12 +31,12 @@ export type Action =
   | {type: "START_ROUND"}
   | {type: "TAKE_SQUARE", coordinates: Coordinates}
   | {type: "END_ROUND"}
-  | {type: "END_GAME"};
+  | {type: "END_GAME"}
+  | {type: "ERROR", error: string};
 
-export type PlayerUser = "Computer" | "Human";
 export type Player = {+name: string, +wins: number, +user: PlayerUser};
 
-export type Square = {+owner?: Player, +coordinates: Coordinates};
+export type Square = {+ownerId?: number, +coordinates: Coordinates};
 
 export type Board = {
   +squares: {[coordinates: Coordinates]: Square},

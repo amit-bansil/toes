@@ -33,7 +33,7 @@ The source code is organized as follows:
  - src/round.js displays the game play screen. It's only dependency is game.js. It is loaded by app.js. 
  - src/app.js combines all the js files except index.js into a single cohesive app. It is loaded by index.js.
  - src/index.js is the main js entry point. It sets up Redux. It is loaded by index.html.
- - public/index.html is the main html entry point and is mostly boilerplate and metadata. It loads app.js.
+ - public/index.html is the main html entry point and is mostly boilerplate and metadata. It loads index.js.
 
 ```
                   +-------------+
@@ -100,4 +100,5 @@ You can find the guide for the version of create-react-app used to create this p
  - Allow head to head play via firebase.
  - Intelligently pair people based on ELO rankings.
  - Add a simple user feedback system ala VS Code
- - install redux dev middlware by adding a script ref in public/index.html and having index.js use it if found. The script ref should only be active if the url contains ?debug=true. Document all keycombos.
+ - Implement a computer AI
+ - Deal with corner case where users run out of baords

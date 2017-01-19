@@ -1,0 +1,15 @@
+.boardAndScores .scores {
+  float: right;
+} 
+.boardAndScores .board {
+  float: left;
+}
+.boardAndScores {
+  margin-top: 20px;
+}
+.boardAndScores .scores {
+  margin-left: 20px;
+}
+.boardAndScores .scores h3 {
+  text-align: left;
+}

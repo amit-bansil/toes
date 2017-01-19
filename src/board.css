@@ -1,0 +1,15 @@
+.board {
+  border-collapse: collapse;
+  border-style: hidden; /* hide outide borders of table */
+}
+.board td{
+  border: 1px solid lightgray;
+  position: relative;
+}
+.board .open:not(:hover) circle{
+  stroke: none;
+}
+.board svg{
+  width: 70px;
+  height: 70px;
+}

@@ -1,0 +1,30 @@
+.appWrap {
+  display: flex;
+  justify-content: center; /* horizontal center */
+}
+.appWrap > * {
+  border-top: 6px solid #f9e7e7;
+  padding: 20px;
+}
+* {
+  font-family: 'Fira Sans',sans-serif;
+  text-align: center;
+}
+td, input {
+  text-align: left;
+}
+a {
+  padding: 3px 6px;
+  cursor: pointer;
+  background-color: #f9e7e7;
+  color: purple;
+}
+h3 {
+  margin: 0;
+}
+.error{
+  color: darkred;
+  background-color: lightpink;
+  margin-top: 20px;
+  padding: 2px 6px;
+}

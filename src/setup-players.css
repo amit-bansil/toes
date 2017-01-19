@@ -1,0 +1,15 @@
+.setupPlayers .players {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.setupPlayers, .setupPlayers input {
+  font-size: 16px;
+}
+.setupPlayers .playerLine:not(:hover) .remove{
+  visibility:hidden;
+}
+.setupPlayers .remove {
+  background-color: transparent;
+  padding: none;
+  color: black;
+}

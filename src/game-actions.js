@@ -32,3 +32,6 @@ export function newEndRoundAction(): Action {
 export function newEndGameAction(): Action {
   return {type: "END_GAME"};
 }
+export function newErrorAction(error): Action {
+  return {type: "ERROR", error};
+}

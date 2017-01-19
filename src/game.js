@@ -23,13 +23,14 @@ export function createBoard(dimensions: number[], winLength: number) {
 
 // -----------------------------------------------------------------------------
 // game mechanics
+// find first line (if any) along which playerId is winnner on board and return it
 export function findWinningLine(
   board: Types.Board,
-  player: Types.Player,
+  playerId: number,
 ): ?(Types.Coordinates[]) {
   // OPTIMIZE cache computeLines
-  for (const line: any of computeLines(board)) {
-    if (isWinningLine(board, player, line)) {
+  for (const line: Types.Coordinates[] of computeLines(board)) {
+    if (isWinningLine(board, playerId, line)) {
       return line;
     }
   }
@@ -45,8 +46,8 @@ export function computeLines(board: Types.Board): Types.Coordinates[] {
   function isPositive(value) {
     return value > 0;
   }
-  const increasingDeltas = deltas.filter(delta => {
-    return delta.some(isPositive);
+  const increasingDeltas = deltas.filter(aDelta => {
+    return aDelta.some(isPositive);
   });
   const squareDeltas = setProduct([_.values(board.squares), increasingDeltas]);
   function computeALine(
@@ -77,16 +78,16 @@ export function computeLines(board: Types.Board): Types.Coordinates[] {
 }
 export function isWinningLine(
   board: Types.Board,
-  player: Types.Player,
+  playerId: number,
   line: Types.Coordinates[],
 ) {
   return line.every(coords => {
-    return board.squares[coords].owner === player;
+    return board.squares[coords].ownerId === playerId;
   });
 }
 export function checkHasOpenSquare(board: Types.Board): boolean {
   return _.values(board.squares).some(square => {
-    return !square.owner;
+    return !square.ownerId && square.ownerId !== 0;
   });
 }
 // -----------------------------------------------------------------------------

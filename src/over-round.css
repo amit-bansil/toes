@@ -1,0 +1,6 @@
+.roundOver .scores {
+  float: right;
+} 
+.roundOver .board {
+  float: left;
+}
