@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
 import {connect} from "react-redux";
-import Board from "./board";
 import * as Action from "./game-actions";
 import {WinnerTitle} from "./player";
 import BoardScores from "./scores";
@@ -16,10 +15,7 @@ export function GameOver({dispatch, round}: args) {
     <div className="gameOver">
       <h2>Game Over:{" "}<WinnerTitle playerId={round.currentPlayerId} /></h2>
       <a onClick={newGame}>New Game</a>
-      <div className="boardAndScores">
-        <Board clickable={false} />
-        <BoardScores />
-      </div>
+      <BoardScores />
     </div>
   );
 }
