@@ -20,6 +20,7 @@ export function gameReducer(state: ?Types.Game, action: ?Types.Action): Types.Ga
   switch (action.type) {
     case "ERROR":
       return {...state, error: action.error};
+
     case "START_GAME":
       if (state.mode !== "SETUP_PLAYERS") {
         throw new Error(`can't start game from mode ${state.mode}`);
@@ -35,6 +36,7 @@ export function gameReducer(state: ?Types.Game, action: ?Types.Action): Types.Ga
         ),
         mode: "SETUP_BOARD",
       };
+
     case "SET_BOARD_SIZE":
       if (state.round || state.mode !== "SETUP_BOARD") {
         throw new Error("can only resize board from SETUP_BOARD");
@@ -43,12 +45,14 @@ export function gameReducer(state: ?Types.Game, action: ?Types.Action): Types.Ga
         ...state,
         board: Game.createBoard(action.dimensions, state.board.winLength),
       };
+
     case "SET_WIN_LENGTH":
       if (state.round || state.mode !== "SETUP_BOARD") {
         throw new Error("can only change win length from SETUP_BOARD");
       }
       const winLength = action.length;
       return {...state, board: Game.createBoard(state.board.dimensions, winLength)};
+
     case "START_ROUND":
       if (state.round || state.mode !== "SETUP_BOARD") {
         throw new Error("can only start round from SETUP_BOARD");
@@ -65,6 +69,7 @@ export function gameReducer(state: ?Types.Game, action: ?Types.Action): Types.Ga
         mode: "PLAY_ROUND",
         round: {startingPlayerId, currentPlayerId: startingPlayerId, hasOpenSquare: true},
       };
+
     case "TAKE_SQUARE":
       if (!state.round || state.mode !== "PLAY_ROUND") {
         throw new Error("can't take square when not in a round");
@@ -81,6 +86,7 @@ export function gameReducer(state: ?Types.Game, action: ?Types.Action): Types.Ga
       if (state.round.winningLine) {
         throw new Error("can't move, current round has already been won.");
       }
+      // compute new game state
       const currentPlayerId = state.round.currentPlayerId;
       const currentPlayer = state.players[currentPlayerId];
       const lastSquarePlayed = {
@@ -94,8 +100,10 @@ export function gameReducer(state: ?Types.Game, action: ?Types.Action): Types.Ga
       );
       const board = {...state.board, squares};
       const nextPlayerIndex = (currentPlayerId + 1) % state.players.length;
+
       const winningLine = Game.findWinningLine(board, currentPlayerId);
       const hasOpenSquare = Game.checkHasOpenSquare(board);
+
       if (winningLine || !hasOpenSquare) {
         let wins = currentPlayer.wins;
         const players = [...state.players];
@@ -127,6 +135,7 @@ export function gameReducer(state: ?Types.Game, action: ?Types.Action): Types.Ga
           },
         };
       }
+
     case "END_ROUND":
       if (state.mode !== "ROUND_OVER") {
         throw new Error(`can't end round while in mode ${state.mode}`);
@@ -141,6 +150,7 @@ export function gameReducer(state: ?Types.Game, action: ?Types.Action): Types.Ga
         alreadyPlayedBoards: [...state.alreadyPlayedBoards, state.board],
         board: Game.createBoard(state.board.dimensions, state.board.winLength),
       };
+
     case "END_GAME":
       // game can be ended at any point
       const players = state.players.map(aPlayer => {
@@ -154,6 +164,7 @@ export function gameReducer(state: ?Types.Game, action: ?Types.Action): Types.Ga
         alreadyPlayedBoards: [],
         board: null,
       };
+
     default:
       return state;
   }
