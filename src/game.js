@@ -23,6 +23,8 @@ export function createBoard(dimensions: number[], winLength: number) {
 
 // -----------------------------------------------------------------------------
 // game mechanics
+// these are designed to work in n=dimensions even though the ui only support 2
+//
 // find first line (if any) along which playerId is winnner on board and return it
 export function findWinningLine(
   board: Types.Board,
@@ -36,8 +38,10 @@ export function findWinningLine(
   }
   return null;
 }
-// return all lines of square coordinates on the board of length of board.winLength
+
+// return all lines of coordinates completely on the board of length of board.winLength
 export function computeLines(board: Types.Board): Types.Coordinates[] {
+  // directions a line can head in
   const deltas = setProduct(repeat(_.range(-1, 2), board.dimensions.length));
 
   // ignore lines that are either backward (all deltas negative/0)
@@ -49,7 +53,11 @@ export function computeLines(board: Types.Board): Types.Coordinates[] {
   const increasingDeltas = deltas.filter(aDelta => {
     return aDelta.some(isPositive);
   });
+
+  // construct all possible [square, delta] tuples to generate lines from
   const squareDeltas = setProduct([_.values(board.squares), increasingDeltas]);
+
+  // find all possible lines by walking along delta winLength steps starting at square
   function computeALine(
     square: Types.Square,
     lineDelta: Types.Coordinates,
@@ -67,6 +75,8 @@ export function computeLines(board: Types.Board): Types.Coordinates[] {
     const delta = squareDelta[1];
     return computeALine(square, delta, board.winLength);
   });
+
+  // return all lines that are completely on the board
   function isInBounds(coord) {
     return _.range(coord.length).every(axis => {
       return 0 <= coord[axis] && coord[axis] < board.dimensions[axis];
@@ -76,6 +86,8 @@ export function computeLines(board: Types.Board): Types.Coordinates[] {
     return line.every(isInBounds);
   });
 }
+
+// test if the line given by a list of coordinates is owned entirely by player
 export function isWinningLine(
   board: Types.Board,
   playerId: number,
@@ -85,6 +97,8 @@ export function isWinningLine(
     return board.squares[coords].ownerId === playerId;
   });
 }
+
+// test if the board has at least 1 more open square
 export function checkHasOpenSquare(board: Types.Board): boolean {
   return _.values(board.squares).some(square => {
     return !square.ownerId && square.ownerId !== 0;
