@@ -34,6 +34,9 @@ export type Action =
   | {type: "END_GAME"}
   | {type: "ERROR", error: string};
 
+// not game related but nice to have here
+export type DispatchFn = (action: Action) => void;
+
 export type Player = {+name: string, +wins: number, +user: PlayerUser};
 
 export type Square = {+ownerId?: number, +coordinates: Coordinates};
