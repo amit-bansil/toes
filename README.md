@@ -10,7 +10,7 @@ Gameplay is as follows:
 
  1. The game begins by an arbitrary number of 2 or more humans and computers registering their names.
 
- 2. The first player selects a `board size` and `win length` that has not yet been selected. The minimum win length is 3. and the minimum board size is 3x3.
+ 2. The first player selects a `board size` and `win length` that has not yet been selected. The minimum win length is 4. and the minimum board size is 4x4.
 
  3. Starting with the first player, each player takes turns grabbing open squares on a `board size` rectangular grid until one player makes a horizontal,vertical, or diagonal string of consecutive pieces of their color that is `win length` long.
 
