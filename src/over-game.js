@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
 import {connect} from "react-redux";
-import "./over-game.css";
 import Board from "./board";
 import * as Action from "./game-actions";
 import {WinnerTitle} from "./player";
