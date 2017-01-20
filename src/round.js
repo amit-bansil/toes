@@ -2,7 +2,6 @@
 import React from "react";
 import {connect} from "react-redux";
 import {TurnIndicator} from "./player";
-import "./round.css";
 import Board from "./board";
 import * as Types from "./game-types";
 
