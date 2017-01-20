@@ -27,7 +27,7 @@ This project is a fairly standard [React](https://facebook.github.io/react/)/[Re
 The source code is organized as follows:
 
  - src/game-types.js describes the state of the game.
- - src/game.js encapsulates the rules above into a pure API.
+ - src/game.js encapsulates the board mechanics into a pure API.
  - src/game-reducers.js mediates the effect of actions on the game state.
  - src/game-actions.js provides factory function for creating instances of the various actions.
 
