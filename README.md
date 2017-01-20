@@ -44,7 +44,7 @@ The source code is organized as follows:
 This project is designed to be edited with [Visual Studio Code](https://code.visualstudio.com/).
 
 It uses the following extensions:
-
+ - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) js formatter.
  - [Wallaby](http://dm.gl/2015/11/26/wallaby-for-visual-studio-code/) test runner.
  - [vscode-flow-ide](https://marketplace.visualstudio.com/items?itemName=gcazaciuc.vscode-flow-ide) Flow type checker integration. Don't use vscode-flow.
  - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) linter.
