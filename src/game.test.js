@@ -26,7 +26,6 @@ it("can configure a game", () => {
 it("can play a simple game", () => {
   let game = reduceAll(null, [Action.newStartGameAction()]);
   function playRound(gameIndex) {
-    console.log("");
     const boardWidth = 4 + gameIndex;
     game = reduceAll(game, [
       Action.newSetBoardSizeAction([3, boardWidth]),
