@@ -4,8 +4,10 @@ import React from "react";
 import {connect} from "react-redux";
 import "./scores.css";
 import Board from "./board";
+import * as Types from "./game-types";
 
-function render({players}) {
+type args = {players: Types.Player[]};
+export function Scores({players}: args) {
   const playersTrs = _.orderBy(players, "wins", "desc").map((aPlayer, index) => {
     return (
       <tr key={index}>
@@ -28,4 +30,4 @@ function mapStateToProps(state) {
   return {players: state.players};
 }
 // for some reason prettier is killing the trailing semicolon here
-export default connect(mapStateToProps)(render) // eslint-disable-line semi
+export default connect(mapStateToProps)(Scores) // eslint-disable-line semi

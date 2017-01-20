@@ -4,7 +4,10 @@ import {connect} from "react-redux";
 import "./setup-players.css";
 import {PLAYER_COLORS} from "./constants";
 import * as Action from "./game-actions";
-function render({players, error, dispatch}) {
+import * as Types from "./game-types";
+
+type args = {players: Types.Player[], dispatch: Types.DispatchFn, error: string};
+export function SetupPlayers({players, error, dispatch}: args) {
   const playerDivs = players.map((aPlayer, index) => {
     return (
       <div key={index} className="playerLine">
@@ -49,4 +52,4 @@ function mapStateToProps(state) {
   return {players: state.players, error: state.error};
 }
 // for some reason prettier is killing the trailing semicolon here
-export default connect(mapStateToProps)(render) // eslint-disable-line semi
+export default connect(mapStateToProps)(SetupPlayers) // eslint-disable-line semi

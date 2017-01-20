@@ -1,5 +1,8 @@
 // @flow
+import {SetupPlayers} from "./setup-players";
+import * as TestUtils from "./test-util";
 
-it("does nothing for now", () => {
-  // pass
+TestUtils.smoke("SetupPlayers", SetupPlayers, {
+  players: TestUtils.SAMPLE_PLAYERS,
+  error: "aba",
 });

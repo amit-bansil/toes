@@ -6,8 +6,16 @@ import "./setup-board.css";
 import * as Action from "./game-actions";
 import {TurnIndicator} from "./player";
 import * as Constants from "./constants";
+import * as Types from "./game-types";
 
-function render({playedBoards, activePlayerId, board, dispatch, error}) {
+type args = {
+  playedBoards: Types.Board[],
+  activePlayerId: number,
+  board: Types.Board,
+  dispatch: Types.DispatchFn,
+  error: string,
+};
+export function SetupBoard({playedBoards, activePlayerId, board, dispatch, error}: args) {
   function startRound() {
     function boardMatches(aBoard) {
       return _.isEqual(aBoard.dimensions, board.dimensions);
@@ -105,4 +113,4 @@ function mapStateToProps(state) {
   };
 }
 // for some reason prettier is killing the trailing semicolon here
-export default connect(mapStateToProps)(render) // eslint-disable-line semi
+export default connect(mapStateToProps)(SetupBoard) // eslint-disable-line semi

@@ -4,8 +4,10 @@ import {connect} from "react-redux";
 import {TurnIndicator} from "./player";
 import "./round.css";
 import Board from "./board";
+import * as Types from "./game-types";
 
-function render({round}) {
+type args = {round: Types.Round};
+export function Round({round}: args) {
   return (
     <div className="round">
       <TurnIndicator playerId={round.currentPlayerId} />
@@ -17,4 +19,4 @@ function mapStateToProps(state) {
   return {round: state.round};
 }
 // for some reason prettier is killing the trailing semicolon here
-export default connect(mapStateToProps)(render) // eslint-disable-line semi
+export default connect(mapStateToProps)(Round) // eslint-disable-line semi

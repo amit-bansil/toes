@@ -5,8 +5,10 @@ import "./over-round.css";
 import * as Action from "./game-actions";
 import {WinnerTitle} from "./player";
 import BoardScores from "./scores";
+import * as Types from "./game-types";
 
-function render({dispatch, round}) {
+type args = {round: Types.Round, dispatch: Types.DispatchFn};
+export function RoundOver({dispatch, round}: args) {
   function nextRound() {
     dispatch(Action.newEndRoundAction());
   }
@@ -26,4 +28,4 @@ function mapStateToProps(state) {
   return {round: state.round};
 }
 // for some reason prettier is killing the trailing semicolon here
-export default connect(mapStateToProps)(render) // eslint-disable-line semi
+export default connect(mapStateToProps)(RoundOver) // eslint-disable-line semi

@@ -2,7 +2,9 @@
   "name": "toes",
   "version": "0.1.0",
   "devDependencies": {
+    "enzyme": "^2.7.0",
     "flow-bin": "^0.37.4",
+    "react-addons-test-utils": "^15.4.2",
     "react-scripts": "0.8.4",
     "redux-devtools": "^3.3.1"
   },

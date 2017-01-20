@@ -1,5 +1,5 @@
 // @flow
+import {Round} from "./round";
+import * as TestUtils from "./test-util";
 
-it("does nothing for now", () => {
-  // pass
-});
+TestUtils.smoke("Round", Round, {round: TestUtils.SAMPLE_ROUND});
