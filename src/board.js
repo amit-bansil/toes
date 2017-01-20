@@ -5,8 +5,15 @@ import {connect} from "react-redux";
 import "./board.css";
 import * as Action from "./game-actions";
 import {PLAYER_COLORS} from "./constants";
+import * as Types from "./game-types";
 
-function render({clickable, round, board, dispatch}) {
+type args = {
+  clickable: boolean,
+  round: Types.Round,
+  board: Types.Board,
+  dispatch: Types.DispatchFn,
+};
+export function Board({clickable, round, board, dispatch}: args) {
   function takeSquare(x, y) {
     dispatch(Action.newTakeSquareAction([x, y]));
   }
@@ -53,4 +60,4 @@ function mapStateToProps(state, ownProps) {
   return {clickable: ownProps.clickable, round: state.round, board: state.board};
 }
 // for some reason prettier is killing the trailing semicolon here
-export default connect(mapStateToProps)(render) // eslint-disable-line semi
+export default connect(mapStateToProps)(Board) // eslint-disable-line semi
