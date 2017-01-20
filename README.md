@@ -4,8 +4,6 @@ Toes is a generalized version of the game tic tac toe.
 
 You can play it at [toes.bansil.org](http://toes.bansil.org).
 
-TODO: insert screenshot here
-
 ## Rules
 
 Gameplay is as follows:
@@ -28,41 +26,18 @@ This project is a fairly standard [React](https://facebook.github.io/react/)/[Re
 
 The source code is organized as follows:
 
- - src/game.js encapsulates the rules above into a pure API. It is created by app.js.
- - src/setup.js is loaded by app.js and displays the game configuration screen. It's only dependency is game.js. It is loaded by app.js.
- - src/round.js displays the game play screen. It's only dependency is game.js. It is loaded by app.js. 
- - src/app.js combines all the js files except index.js into a single cohesive app. It is loaded by index.js.
- - src/index.js is the main js entry point. It sets up Redux. It is loaded by index.html.
- - public/index.html is the main html entry point and is mostly boilerplate and metadata. It loads index.js.
+ - src/game-types.js describes the state of the game.
+ - src/game.js encapsulates the rules above into a pure API.
+ - src/game-reducers.js mediates the effect of actions on the game state.
+ - src/game-actions.js provides factory function for creating instances of the various actions.
 
-```
-                  +-------------+
-                  |             |
-       +--------->+  game.js    +<---------+
-       |          |             |          |
-       |          +------+------+          |
-       |                 ^                 |
-       |                 |                 |
-+------+------+   +------+------+   +------+------+
-|             |   |             |   |             |
-|  setup.js   +<--+  app.js     +-->+  round.js   |
-|             |   |             |   |             |
-+-------------+   +------+------+   +-------------+
-                         ^
-                         |
-                  +------+------+
-                  |             |
-                  |  index.js   |
-                  |             |
-                  +------+------+
-                         ^
-                         |
-                  +------+------+
-                  |             |
-                  |  index.html |
-                  |             |
-                  +-------------+
-```
+ - src/player.js, src/board.js, src/scores.js contain utility react components used by the components below.
+
+ - src/setup-players.js, src/setup-board.js, src/round.js, src/over-round.js, over-game.js contain the react components that describe the screens corresponding to the respective game modes.
+
+ - src/app.js routes between the various screen components.
+ - src/index.js is the main js entry point. It sets up Redux and app.js. It is loaded by index.html.
+ - public/index.html is the main html entry point and is mostly boilerplate and metadata. It loads index.js.
 
 ## Tooling
 
