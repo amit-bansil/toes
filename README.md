@@ -2,8 +2,6 @@
 
 Toes is a generalized version of the game tic tac toe.
 
-You can play it at [toes.bansil.org](http://toes.bansil.org).
-
 ## Rules
 
 Gameplay is as follows:
