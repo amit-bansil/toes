@@ -74,4 +74,4 @@ You can find the guide for the version of create-react-app used to create this p
  - Intelligently pair people based on ELO rankings.
  - Add a simple user feedback system ala VS Code
  - Implement a computer AI
- - Deal with corner case where users run out of baords
+ - Deal with corner case where users run out of boards
